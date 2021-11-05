@@ -15,6 +15,8 @@ server.on('connection', (client) => {
     let host = 'sid22071-weather-app.herokuapp.com';
     let port = 80;
     console.log(client.address());
+    console.log('local address' + client.localAddress);
+    console.log('remote address' + client.remoteAddress);
     if (
       client.remoteAddress === '::1' ||
       client.remoteAddress === '::ffff:10.1.52.4'
