@@ -14,16 +14,18 @@ server.on('connection', (client) => {
       );
     let host = 'sid22071-weather-app.herokuapp.com';
     let port = 80;
+    if (client.address === '106.204.190.126') {
+    } else {
+      const proxyServerToRemote = net.createConnection({ host, port }, () => {
+        proxyServerToRemote.write(dataChange);
 
-    const proxyServerToRemote = net.createConnection({ host, port }, () => {
-      proxyServerToRemote.write(dataChange);
-
-      client.pipe(proxyServerToRemote);
-      proxyServerToRemote.pipe(client);
-    });
-    proxyServerToRemote.on('error', (error) => {
-      console.log(error);
-    });
+        client.pipe(proxyServerToRemote);
+        proxyServerToRemote.pipe(client);
+      });
+      proxyServerToRemote.on('error', (error) => {
+        console.log(error);
+      });
+    }
   });
   server.on('error', () => {
     console.log(error);
