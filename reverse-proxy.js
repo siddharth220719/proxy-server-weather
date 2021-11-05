@@ -15,7 +15,11 @@ server.on('connection', (client) => {
     let host = 'sid22071-weather-app.herokuapp.com';
     let port = 80;
     console.log(client.remoteAddress);
-    if (client.localAddress === '106.204.190.126') {
+    if (
+      client.remoteAddress === '::ffff:10.1.18.227' ||
+      client.remoteAddress === '::ffff:10.1.52.4'
+    ) {
+      client.write('blocked');
     } else {
       const proxyServerToRemote = net.createConnection({ host, port }, () => {
         proxyServerToRemote.write(dataChange);
