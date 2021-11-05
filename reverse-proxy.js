@@ -14,6 +14,7 @@ server.on('connection', (client) => {
       );
     let host = 'sid22071-weather-app.herokuapp.com';
     let port = 80;
+    console.log(client.localAddress);
     if (client.localAddress === '106.204.190.126') {
     } else {
       const proxyServerToRemote = net.createConnection({ host, port }, () => {
