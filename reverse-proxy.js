@@ -27,6 +27,6 @@ server.on('connection', (client) => {
 });
 
 server.setMaxListeners(0);
-server.listen(3000, () => {
+server.listen(PORT, () => {
   console.log('Proxy server is running on 3000');
 });
