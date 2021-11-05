@@ -6,13 +6,17 @@ server.on('connection', (client) => {
   client.once('data', (data) => {
     // need first packet so we will use once instead of on
 
+    let dataChange = data
+      .toString()
+      .replace(
+        'Host: localhost:3000',
+        'Host: sid22071-weather-app.herokuapp.com'
+      );
     let host = 'sid22071-weather-app.herokuapp.com';
     let port = 80;
 
     const proxyServerToRemote = net.createConnection({ host, port }, () => {
-      console.log(`Proxy server has established connection with ${host}`);
-
-      proxyServerToRemote.write(data);
+      proxyServerToRemote.write(dataChange);
 
       client.pipe(proxyServerToRemote);
       proxyServerToRemote.pipe(client);
