@@ -9,7 +9,7 @@ server.on('connection', (client) => {
     let dataChange = data
       .toString()
       .replace(
-        'Host: localhost:3000',
+        'Host: proxy-server-weather.herokuapp.com',
         'Host: sid22071-weather-app.herokuapp.com'
       );
     let host = 'sid22071-weather-app.herokuapp.com';
