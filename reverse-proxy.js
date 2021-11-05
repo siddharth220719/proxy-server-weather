@@ -8,7 +8,10 @@ server.on('connection', (client) => {
 
     let dataChange = data
       .toString()
-      .replace('Host: localhost', 'Host: sid22071-weather-app.herokuapp.com');
+      .replace(
+        'Host: proxy-server-weather.herokuapp.com',
+        'Host: sid22071-weather-app.herokuapp.com'
+      );
     let host = 'sid22071-weather-app.herokuapp.com';
     let port = 80;
     console.log(client.address());
